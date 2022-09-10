@@ -1,23 +1,23 @@
 package hexlet.code.game;
 
 import hexlet.code.Engine;
-import hexlet.code.Generator;
+import hexlet.code.App;
+import hexlet.code.RandomUtils;
 
 public class Even {
     public static void playGame() {
         var resultGame = true;
-        Engine.sayHello();
+        App.sayHello();
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
         for (int i = 0; i < Engine.quantityAround; i++) {
-            var num1 = Generator.generateRandomNums(Generator.minNums, Generator.maxNums);
-            var resultCalculation = Engine.getCalculationResult(num1);
-            var exprision = num1 + "";
-            var resultComparisonQuestionAndAnswer = Engine.comparisonQuestionAndAnswer(exprision, resultCalculation);
+            int num1 = RandomUtils.generateRandomNums(RandomUtils.minNums, RandomUtils.maxNums);
+            String exprision = num1 + "";
+            var resultComparisonQuestionAndAnswer = Engine.getResultGame(num1, exprision);
             if (!resultComparisonQuestionAndAnswer) {
                 resultGame = false;
                 break;
             }
         }
-        Engine.gerResultGame(resultGame);
+        Engine.getResultGame(resultGame);
     }
 }

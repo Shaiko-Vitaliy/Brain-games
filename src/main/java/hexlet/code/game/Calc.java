@@ -1,28 +1,29 @@
 package hexlet.code.game;
 
 import hexlet.code.Engine;
-import hexlet.code.Generator;
+import hexlet.code.App;
+import hexlet.code.RandomUtils;
 
 public class Calc {
     private final static int quantityMathematicalOperation = 3;
     public static void playGame() {
         var resultGame = true;
-        Engine.sayHello();
+        App.sayHello();
         System.out.println("What is the result of the expression?");
         for (int i = 0; i < Engine.quantityAround; i++) {
-            var num1 = Generator.generateRandomNums(Generator.minNums, Generator.maxNums);
-            var num2 = Generator.generateRandomNums(Generator.minNums, Generator.maxNums);
+            var num1 = RandomUtils.generateRandomNums(RandomUtils.minNums, RandomUtils.maxNums);
+            var num2 = RandomUtils.generateRandomNums(RandomUtils.minNums, RandomUtils.maxNums);
             var numberMathematicalOperation =
-                    Generator.generateRandomNums(Generator.minNums, quantityMathematicalOperation);
-            var resultCalculation = Engine.getCalculationResult(num1, num2, numberMathematicalOperation);
-            var expresion = num1 + " " + getMathematicalOperation(numberMathematicalOperation) + " " + num2;
-            var resultComparisonQuestionAndAnswer = Engine.comparisonQuestionAndAnswer(resultCalculation, expresion);
+                    RandomUtils.generateRandomNums(RandomUtils.minNums, quantityMathematicalOperation);
+            var expression = num1 + " " + getMathematicalOperation(numberMathematicalOperation) + " " + num2;
+            var resultComparisonQuestionAndAnswer = Engine.getResultGame(num1, num2
+                    , numberMathematicalOperation, expression);
             if (!resultComparisonQuestionAndAnswer) {
                 resultGame = false;
                 break;
             }
         }
-        Engine.gerResultGame(resultGame);
+        Engine.getResultGame(resultGame);
     }
 
     private static String getMathematicalOperation(int numberMathematicalOperation) {
@@ -34,4 +35,6 @@ public class Calc {
             return "*";
         }
     }
+
+
 }
