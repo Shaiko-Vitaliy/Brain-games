@@ -15,7 +15,7 @@ public class App {
         Engine.scanner.nextLine();
         switch (numGame) {
             case 1:
-                Cli.sayHello();
+                Greet.sayHello();
                 break;
             case 2:
                 Even.playGame();
