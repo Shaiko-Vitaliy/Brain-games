@@ -1,17 +1,24 @@
 package hexlet.code;
 
-import hexlet.code.game.*;
+import hexlet.code.game.Calc;
+import hexlet.code.game.Even;
+import hexlet.code.game.GCD;
+import hexlet.code.game.Prime;
+import hexlet.code.game.Progression;
+import java.util.Scanner;
 
 public class App {
 
-    public static String userName = "";
+    private static final Scanner scannerApp = new Scanner(System.in);
+    protected static String userName = "";
+
     public static void main(String[] args) {
         choiseGame();
     }
 
     public static void choiseGame() {
         menuOutput();
-        var numGame = Engine.scanner.nextLine();
+        var numGame = scannerApp.nextLine();
         switch (numGame) {
             case "1":
                 Cli.playGame();
@@ -50,8 +57,8 @@ public class App {
 
     public static void sayHello() {
         System.out.print("Welcome to the Brain Games!" + "\n" + "May I have your name? ");
-        App.userName = Engine.scanner.nextLine();
-        System.out.println("Hello, " + App.userName + "!");
+        userName = scannerApp.nextLine();
+        System.out.println("Hello, " + userName + "!");
     }
 }
 
