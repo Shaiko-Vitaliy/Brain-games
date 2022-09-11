@@ -11,25 +11,24 @@ public class App {
 
     public static void choiseGame() {
         menuOutput();
-        var numGame = Engine.scanner.nextInt();
-        Engine.scanner.nextLine();
+        var numGame = Engine.scanner.nextLine();
         switch (numGame) {
-            case 1:
+            case "1":
                 Cli.playGame();
                 break;
-            case 2:
+            case "2":
                 Even.playGame();
                 break;
-            case 3:
+            case "3":
                 Calc.playGame();
                 break;
-            case 4:
+            case "4":
                 GCD.playGame();
                 break;
-            case 5:
+            case "5":
                 Progression.playGame();
                 break;
-            case 6:
+            case "6":
                 Prime.playGame();
                 break;
             default:

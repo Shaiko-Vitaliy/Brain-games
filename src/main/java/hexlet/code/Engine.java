@@ -73,9 +73,8 @@ public class Engine {
     private static boolean comparisonQuestionAndAnswer(int hiddenNumber, String expresion) {
         System.out.println("Question: " + expresion);
         System.out.print("Your answer: ");
-        var answer = Engine.scanner.nextInt();
-        Engine.scanner.nextLine();
-        if (answer == hiddenNumber) {
+        var answer = Engine.scanner.nextLine();
+        if (answer.equals(Integer.toString(hiddenNumber))) {
             System.out.println("Correct!");
         } else {
             System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + hiddenNumber + "'.");
