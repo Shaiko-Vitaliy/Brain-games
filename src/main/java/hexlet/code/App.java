@@ -9,8 +9,8 @@ import java.util.Scanner;
 
 public class App {
 
-    private static final Scanner scannerApp = new Scanner(System.in);
-    protected static String userName = "";
+    private static final Scanner SCANNER = new Scanner(System.in);
+    private static String userName = "";
 
     public static void main(String[] args) {
         choiseGame();
@@ -18,7 +18,7 @@ public class App {
 
     public static void choiseGame() {
         menuOutput();
-        var numGame = scannerApp.nextLine();
+        var numGame = SCANNER.nextLine();
         switch (numGame) {
             case "1":
                 Cli.playGame();
@@ -57,8 +57,13 @@ public class App {
 
     public static void sayHello() {
         System.out.print("Welcome to the Brain Games!" + "\n" + "May I have your name? ");
-        userName = scannerApp.nextLine();
+        userName = SCANNER.nextLine();
         System.out.println("Hello, " + userName + "!");
     }
+
+    public  static  String getUserName() {
+        return  userName;
+    }
+
 }
 

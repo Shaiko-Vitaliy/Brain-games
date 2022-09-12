@@ -5,12 +5,12 @@ import hexlet.code.App;
 import hexlet.code.RandomUtils;
 
 public class Prime {
-    private final static int quantityAroundPrime = 3;
+    private static final int NUMBER_OF_LAUNCHES = 3;
     public static void playGame() {
         var resultGame = true;
         App.sayHello();
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-        for (int i = 0; i < quantityAroundPrime; i++) {
+        for (int i = 0; i < NUMBER_OF_LAUNCHES; i++) {
             var num1 = RandomUtils.generateRandomNums();
             var resultCalculation = getCalculationResult(num1);
             var exprisionNum = num1 + "";

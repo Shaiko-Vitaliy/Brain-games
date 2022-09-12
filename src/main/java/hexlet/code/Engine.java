@@ -3,7 +3,7 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Engine {
-    private static final Scanner scannerEngine = new Scanner(System.in);
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     public static boolean getResultGame(int num1, int num2, int numberMathematicalOperation, String expression) {
         var resultCalculation = Engine.getCalculationResult(num1, num2, numberMathematicalOperation);
@@ -30,7 +30,7 @@ public class Engine {
 
     public static void getResultGame(boolean resultGame) {
         if (resultGame) {
-            System.out.println("Congratulations, " + App.userName + "!");
+            System.out.println("Congratulations, " + App.getUserName() + "!");
         }
     }
 
@@ -72,12 +72,12 @@ public class Engine {
     private static boolean comparisonQuestionAndAnswer(int hiddenNumber, String expresion) {
         System.out.println("Question: " + expresion);
         System.out.print("Your answer: ");
-        var answer = scannerEngine.nextLine();
+        var answer = SCANNER.nextLine();
         if (answer.equals(Integer.toString(hiddenNumber))) {
             System.out.println("Correct!");
         } else {
             System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + hiddenNumber + "'.");
-            System.out.println("Let's try again, " + App.userName + "!");
+            System.out.println("Let's try again, " + App.getUserName() + "!");
             return false;
         }
         return true;
@@ -86,13 +86,13 @@ public class Engine {
     private static boolean comparisonQuestionAndAnswer(String num1, String resultCalculation) {
         System.out.println("Question: " + num1);
         System.out.print("Your answer: ");
-        var answer = scannerEngine.nextLine();
+        var answer = SCANNER.nextLine();
         if (answer.equals(resultCalculation)) {
             System.out.println("Correct!");
         } else {
             System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '"
                     + resultCalculation + "'.");
-            System.out.println("Let's try again, " + App.userName + "!");
+            System.out.println("Let's try again, " + App.getUserName() + "!");
             return false;
         }
         return true;
