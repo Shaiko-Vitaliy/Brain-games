@@ -6,32 +6,37 @@ import hexlet.code.RandomUtils;
 
 public class Prime {
     private static final int NUMBER_OF_LAUNCHES = 3;
-    public static void playGame() {
+    private static final String TYPE_OF_GAME = "Prime";
+    public static void startGame() {
         var resultGame = true;
         App.sayHello();
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
+        var tasks = new String[1];
         for (int i = 0; i < NUMBER_OF_LAUNCHES; i++) {
-            var num1 = RandomUtils.generateRandomNums();
-            var resultCalculation = getCalculationResult(num1);
-            var exprisionNum = num1 + "";
-            var resultComparisonQuestionAndAnswer = Engine.getResultGame(exprisionNum, resultCalculation);
+            var checkNum = RandomUtils.generateRandomNums();
+            var resultCheckingForNumbersOnPrimes = checkingForNumbersOnPrimes(checkNum);
+            var expression = String.valueOf(checkNum);
+            tasks[0] = resultCheckingForNumbersOnPrimes;
+            var resultComparisonQuestionAndAnswer = Engine.playGame(tasks, expression, TYPE_OF_GAME);
             if (!resultComparisonQuestionAndAnswer) {
                 resultGame = false;
                 break;
             }
         }
-        Engine.getResultGame(resultGame);
+        if (resultGame) {
+            System.out.println("Congratulations, " + App.getUserName() + "!");
+        }
     }
 
-    public static String getCalculationResult(int num) {
-        if (num == 2) {
+    public static String checkingForNumbersOnPrimes(int checkNum) {
+        if (checkNum == 2) {
             return "yes";
         }
-        if (num == 1 || num % 2 == 0) {
+        if (checkNum == 1 || checkNum % 2 == 0) {
             return "no";
         }
-        for (var i = 2; i <= Math.sqrt(num); i++) {
-            if (num % i == 0) {
+        for (var i = 2; i <= Math.sqrt(checkNum); i++) {
+            if (checkNum % i == 0) {
                 return "no";
             }
         }

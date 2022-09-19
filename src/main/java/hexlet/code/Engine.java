@@ -5,52 +5,57 @@ import java.util.Scanner;
 public class Engine {
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    public static boolean getResultGame(int num1, int num2, int numberMathematicalOperation, String expression) {
-        var resultCalculation = Engine.getCalculationResult(num1, num2, numberMathematicalOperation);
-        return comparisonQuestionAndAnswer(resultCalculation, expression);
-    }
-
-    public static boolean getResultGame(int num1, int num2, String expression) {
-        var resultCalculation = Engine.getCalculationResult(num1, num2);
-        return comparisonQuestionAndAnswer(resultCalculation, expression);
-    }
-
-    public static boolean getResultGame(int num1, String expression) {
-        var resultCalculation = Engine.getCalculationResult(num1);
-        return comparisonQuestionAndAnswer(expression, resultCalculation);
-    }
-
-    public static boolean getResultGame(String expressionNum, String resultCalculation) {
-        return comparisonQuestionAndAnswer(expressionNum, resultCalculation);
-    }
-
-    public static boolean getResultGame(String resultCalculation, int expressionNum) {
-        return comparisonQuestionAndAnswer(expressionNum, resultCalculation);
-    }
-
-    public static void getResultGame(boolean resultGame) {
-        if (resultGame) {
-            System.out.println("Congratulations, " + App.getUserName() + "!");
+    public static boolean playGame(String[] tasks, String expression, String typeOfGame) {
+        var result = false;
+        switch (typeOfGame) {
+            case "Calc" :
+                var resultCalculation = Engine.calculationOfNumbers(tasks);
+                result = comparisonQuestionAndAnswer(resultCalculation, expression);
+                break;
+            case "Even" :
+                var resultEvenParity = Engine.evenParity(tasks);
+                result = comparisonQuestionAndAnswer(resultEvenParity, expression);
+                break;
+            case "GCD" :
+                var resultCalculation1 = Engine.searchDivisor(tasks);
+                result = comparisonQuestionAndAnswer(resultCalculation1, expression);
+                break;
+            case "Prime" :
+                result = comparisonQuestionAndAnswer(tasks[0], expression);
+                break;
+            case "Progression" :
+                result = comparisonQuestionAndAnswerForProgression(tasks[0], expression);
+                break;
+            default:
+                break;
         }
+        return result;
     }
 
-    private static int getCalculationResult(int num1, int num2, int numberMathematicalOperation) {
-        if (numberMathematicalOperation == 0) {
-            return num1 + num2;
-        } else if (numberMathematicalOperation == 1) {
-            return num1 - num2;
+    private static String calculationOfNumbers(String[] tasks) {
+        String mathematicalOperation = tasks[1];
+        int firstSummand = Integer.parseInt(tasks[0]);
+        int secondSummand = Integer.parseInt(tasks[2]);
+        var result = 0;
+        if (mathematicalOperation.equals("+")) {
+            result = firstSummand + secondSummand;
+        } else if (mathematicalOperation.equals("-")) {
+            result = firstSummand - secondSummand;
         } else {
-            return num1 * num2;
+            result = firstSummand * secondSummand;
         }
+        return String.valueOf(result);
     }
 
-    private static int getCalculationResult(int num1, int num2) {
-        var minNum = Math.min(num1, num2);
-        var maxNum = Math.max(num1, num2);
+    private static String searchDivisor(String[] tasks) {
+        var firstNumerator = Integer.parseInt(tasks[0]);
+        var secondNumerator = Integer.parseInt(tasks[1]);
+        var minNum = Math.min(firstNumerator, secondNumerator);
+        var maxNum = Math.max(firstNumerator, secondNumerator);
         var result = 1;
         if (maxNum % minNum == 0) {
             result = minNum;
-            return result;
+            return String.valueOf(result);
         } else {
             for (int i = 1; i < minNum / 2; i++) {
                 if (minNum % i == 0 && maxNum % i == 0) {
@@ -58,33 +63,44 @@ public class Engine {
                 }
             }
         }
-        return result;
+        return String.valueOf(result);
     }
 
-    private static String getCalculationResult(int num1) {
-        if (num1 % 2 == 0) {
+    private static String evenParity(String[] tasks) {
+        int evenOrNotEvenNum = Integer.parseInt(tasks[0]);
+        if (evenOrNotEvenNum % 2 == 0) {
             return "yes";
         } else {
             return "no";
         }
     }
 
-    private static boolean comparisonQuestionAndAnswer(int hiddenNumber, String expresion) {
-        System.out.println("Question: " + expresion);
+    private static boolean comparisonQuestionAndAnswer(String resultCalculation, String expression) {
+        System.out.println("Question: " + expression);
         System.out.print("Your answer: ");
         var answer = SCANNER.nextLine();
-        if (answer.equals(Integer.toString(hiddenNumber))) {
+        if (answer.equals(resultCalculation)) {
             System.out.println("Correct!");
         } else {
-            System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + hiddenNumber + "'.");
+            System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '"
+                    + resultCalculation + "'.");
             System.out.println("Let's try again, " + App.getUserName() + "!");
             return false;
         }
         return true;
     }
 
-    private static boolean comparisonQuestionAndAnswer(String num1, String resultCalculation) {
-        System.out.println("Question: " + num1);
+    private static boolean comparisonQuestionAndAnswerForProgression(String resultCalculation, String expression) {
+        var sequenceNums = expression.split(" ");
+        var expressionFinal = "";
+        for (String sequenceNum : sequenceNums) {
+            if (sequenceNum.equals(resultCalculation)) {
+                expressionFinal = expressionFinal + ".. ";
+            } else {
+                expressionFinal = expressionFinal + sequenceNum + " ";
+            }
+        }
+        System.out.println("Question: " + expressionFinal);
         System.out.print("Your answer: ");
         var answer = SCANNER.nextLine();
         if (answer.equals(resultCalculation)) {

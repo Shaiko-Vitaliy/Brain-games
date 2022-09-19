@@ -24,19 +24,19 @@ public class App {
                 Cli.playGame();
                 break;
             case "2":
-                Even.playGame();
+                Even.startGame();
                 break;
             case "3":
-                Calc.playGame();
+                Calc.startGame();
                 break;
             case "4":
-                GCD.playGame();
+                GCD.startGame();
                 break;
             case "5":
-                Progression.playGame();
+                Progression.startGame();
                 break;
             case "6":
-                Prime.playGame();
+                Prime.startGame();
                 break;
             default:
                 break;

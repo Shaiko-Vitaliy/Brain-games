@@ -9,7 +9,8 @@ public class Progression {
     private static final int MIN_SEQUNCE_LENGTH = 5;
     private static final int MAX_ARIFMETIC_PROGRESSION = 4;
     private static final int NUMBER_OF_LAUNCHES = 3;
-    public static void playGame() {
+    private static final String TYPE_OF_GAME = "Progression";
+    public static void startGame() {
         var resultGame = true;
         App.sayHello();
         System.out.println("What number is missing in the progression?");
@@ -19,29 +20,28 @@ public class Progression {
             var volArifmeticProgresion = RandomUtils.generateRandomNums(1, MAX_ARIFMETIC_PROGRESSION);
             var possitionHiddenNumber = RandomUtils.generateRandomNums(0, volSequenceLength - 1);
             var hiddenNumber = possitionHiddenNumber * volArifmeticProgresion + numMin;
-            var expresion = getExpresion(numMin, volSequenceLength, possitionHiddenNumber, volArifmeticProgresion);
-            var resultComparisonQuestionAndAnswer = Engine.getResultGame(expresion, hiddenNumber);
+            var tasks = new String[1];
+            tasks[0] = String.valueOf(hiddenNumber);
+            var expression  = formingExpresion(numMin, volSequenceLength,
+                    possitionHiddenNumber, volArifmeticProgresion);
+            var resultComparisonQuestionAndAnswer = Engine.playGame(tasks, expression, TYPE_OF_GAME);
             if (!resultComparisonQuestionAndAnswer) {
                 resultGame = false;
                 break;
             }
         }
-        Engine.getResultGame(resultGame);
+        if (resultGame) {
+            System.out.println("Congratulations, " + App.getUserName() + "!");
+        }
     }
 
-    private static String getExpresion(int numMin, int volSequenceLength,
+    private static String formingExpresion(int numMin, int volSequenceLength,
                                        int possitionHiddenNumber, int volArifmeticProgresion) {
         var result = new StringBuilder();
         var count = numMin;
         for (int i = 0; i < volSequenceLength; i++) {
-            if (i == possitionHiddenNumber && i < volSequenceLength - 1) {
-                result.append(".. ");
-            } else if (i == possitionHiddenNumber && i == volSequenceLength - 1) {
-                result.append("..");
-            } else {
-                result.append(count);
-                result.append(" ");
-            }
+            result.append(count);
+            result.append(" ");
             count += volArifmeticProgresion;
         }
         return result.toString();
