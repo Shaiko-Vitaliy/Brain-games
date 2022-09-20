@@ -15,15 +15,14 @@ public class Progression {
         App.sayHello();
         System.out.println("What number is missing in the progression?");
         for (int i = 0; i < NUMBER_OF_LAUNCHES; i++) {
-            var numMin = RandomUtils.generateRandomNums();
+            var numMinForProgression = RandomUtils.generateRandomNums();
             var volSequenceLength = RandomUtils.generateRandomNums(MIN_SEQUNCE_LENGTH, MAX_SEQUENCE_LENGTH);
             var volArifmeticProgresion = RandomUtils.generateRandomNums(1, MAX_ARIFMETIC_PROGRESSION);
             var possitionHiddenNumber = RandomUtils.generateRandomNums(0, volSequenceLength - 1);
-            var hiddenNumber = possitionHiddenNumber * volArifmeticProgresion + numMin;
+            var hiddenNumber = possitionHiddenNumber * volArifmeticProgresion + numMinForProgression;
             var tasks = new String[1];
             tasks[0] = String.valueOf(hiddenNumber);
-            var expression  = formingExpresion(numMin, volSequenceLength,
-                    possitionHiddenNumber, volArifmeticProgresion);
+            var expression  = formingExpression(numMinForProgression, volSequenceLength, volArifmeticProgresion);
             var resultComparisonQuestionAndAnswer = Engine.playGame(tasks, expression, TYPE_OF_GAME);
             if (!resultComparisonQuestionAndAnswer) {
                 resultGame = false;
@@ -35,8 +34,7 @@ public class Progression {
         }
     }
 
-    private static String formingExpresion(int numMin, int volSequenceLength,
-                                       int possitionHiddenNumber, int volArifmeticProgresion) {
+    private static String formingExpression(int numMin, int volSequenceLength, int volArifmeticProgresion) {
         var result = new StringBuilder();
         var count = numMin;
         for (int i = 0; i < volSequenceLength; i++) {
