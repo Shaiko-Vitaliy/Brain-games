@@ -1,38 +1,24 @@
 package hexlet.code.game;
 
 import hexlet.code.Engine;
-import hexlet.code.App;
 import hexlet.code.RandomUtils;
 
 public class Calc {
     private static final int MATHEMATICAL_OPERATION = 3;
     private static final int NUMBER_OF_LAUNCHES = 3;
-    private static final int VALUE_TASKS = 3;
-    private static final String TYPE_OF_GAME = "Calc";
+    private static final String QUESTION = "What is the result of the expression?";
     public static void startGame() {
-        var resultGame = true;
-        App.sayHello();
-        System.out.println("What is the result of the expression?");
-        var tasks = new String[VALUE_TASKS];
+        var expressions = new String[NUMBER_OF_LAUNCHES];
+        var  correctAnswers = new String[NUMBER_OF_LAUNCHES];
         for (int i = 0; i < NUMBER_OF_LAUNCHES; i++) {
             var firstSummand = RandomUtils.generateRandomNums();
             var secondSummand = RandomUtils.generateRandomNums();
             var mathematicalOperation = generateMathematicalOperation();
-            var expression = firstSummand + " " + mathematicalOperation + " " + secondSummand;
-            tasks[0] = String.valueOf(firstSummand);
-            tasks[1] = mathematicalOperation;
-            tasks[2] = String.valueOf(secondSummand);
-            var resultComparisonQuestionAndAnswer = Engine.playGame(tasks, expression, TYPE_OF_GAME);
-            if (!resultComparisonQuestionAndAnswer) {
-                resultGame = false;
-                break;
-            }
+            correctAnswers[i] = Calc.calculationOfNumbers(firstSummand, secondSummand, mathematicalOperation);
+            expressions[i] = firstSummand + " " + mathematicalOperation + " " + secondSummand;
         }
-        if (resultGame) {
-            System.out.println("Congratulations, " + App.getUserName() + "!");
-        }
+        Engine.playGame(expressions, correctAnswers, QUESTION);
     }
-
     private static String generateMathematicalOperation() {
         var numberMathematicalOperation = RandomUtils.generateRandomNums(0, MATHEMATICAL_OPERATION);
         String mathematicalOperation = "";
@@ -51,4 +37,17 @@ public class Calc {
         }
         return mathematicalOperation;
     }
+
+    private static String calculationOfNumbers(int firstSummand, int secondSummand, String mathematicalOperation) {
+        var result = 0;
+        if (mathematicalOperation.equals("+")) {
+            result = firstSummand + secondSummand;
+        } else if (mathematicalOperation.equals("-")) {
+            result = firstSummand - secondSummand;
+        } else {
+            result = firstSummand * secondSummand;
+        }
+        return String.valueOf(result);
+    }
 }
+

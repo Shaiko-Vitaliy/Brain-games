@@ -1,31 +1,20 @@
 package hexlet.code.game;
 
 import hexlet.code.Engine;
-import hexlet.code.App;
 import hexlet.code.RandomUtils;
 
 public class Prime {
     private static final int NUMBER_OF_LAUNCHES = 3;
-    private static final String TYPE_OF_GAME = "Prime";
+    private static final String QUESTION = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     public static void startGame() {
-        var resultGame = true;
-        App.sayHello();
-        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-        var tasks = new String[1];
+        var expressions = new String[NUMBER_OF_LAUNCHES];
+        var correctAnswers = new String[NUMBER_OF_LAUNCHES];
         for (int i = 0; i < NUMBER_OF_LAUNCHES; i++) {
             var checkNum = RandomUtils.generateRandomNums();
-            var resultCheckingForNumbersOnPrimes = checkingForNumbersOnPrimes(checkNum);
-            var expression = String.valueOf(checkNum);
-            tasks[0] = resultCheckingForNumbersOnPrimes;
-            var resultComparisonQuestionAndAnswer = Engine.playGame(tasks, expression, TYPE_OF_GAME);
-            if (!resultComparisonQuestionAndAnswer) {
-                resultGame = false;
-                break;
-            }
+            expressions[i] = String.valueOf(checkNum);
+            correctAnswers[i] = checkingForNumbersOnPrimes(checkNum);
         }
-        if (resultGame) {
-            System.out.println("Congratulations, " + App.getUserName() + "!");
-        }
+        Engine.playGame(expressions, correctAnswers, QUESTION);
     }
 
     public static String checkingForNumbersOnPrimes(int checkNum) {
