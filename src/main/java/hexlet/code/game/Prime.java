@@ -12,23 +12,23 @@ public class Prime {
         for (int i = 0; i < NUMBER_OF_LAUNCHES; i++) {
             var checkNum = RandomUtils.generateRandomNums();
             expressions[i] = String.valueOf(checkNum);
-            correctAnswers[i] = checkingForNumbersOnPrimes(checkNum);
+            correctAnswers[i] = checkingForNumbersOnPrimes(checkNum) ? "yes" : "no";
         }
         Engine.playGame(expressions, correctAnswers, QUESTION);
     }
 
-    public static String checkingForNumbersOnPrimes(int checkNum) {
+    private static boolean checkingForNumbersOnPrimes(int checkNum) {
         if (checkNum == 2) {
-            return "yes";
+            return true;
         }
         if (checkNum == 1 || checkNum % 2 == 0) {
-            return "no";
+            return false;
         }
         for (var i = 2; i <= Math.sqrt(checkNum); i++) {
             if (checkNum % i == 0) {
-                return "no";
+                return false;
             }
         }
-        return "yes";
+        return true;
     }
 }

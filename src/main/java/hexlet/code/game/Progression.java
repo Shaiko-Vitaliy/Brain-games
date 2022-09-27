@@ -8,7 +8,7 @@ public class Progression {
     private static final int MIN_SEQUNCE_LENGTH = 5;
     private static final int MAX_ARIFMETIC_PROGRESSION = 4;
     private static final int NUMBER_OF_LAUNCHES = 3;
-    private static final String QUESTION = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+    private static final String QUESTION = "What number is missing in the progression?";
     public static void startGame() {
         var expressions = new String[NUMBER_OF_LAUNCHES];
         var correctAnswers = new String[NUMBER_OF_LAUNCHES];
