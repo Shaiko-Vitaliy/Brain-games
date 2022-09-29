@@ -22,7 +22,7 @@ public class Engine {
 
     private static boolean comparisonQuestionAndAnswer(String expression, String correctAnswer, String question) {
         var expressionFinal = "";
-        if (question.equals("Answer 'yes' if given number is prime. Otherwise answer 'no'.")) {
+        if (question.equals("What number is missing in the progression?")) {
             expressionFinal = hideNumberInProgression(expression, correctAnswer);
         } else {
             expressionFinal = expression;

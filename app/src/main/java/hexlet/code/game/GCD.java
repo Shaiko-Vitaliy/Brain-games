@@ -11,10 +11,8 @@ public class GCD {
         var expressions = new String[NUMBER_OF_LAUNCHES];
         var correctAnswers = new String[NUMBER_OF_LAUNCHES];
         for (int i = 0; i < NUMBER_OF_LAUNCHES; i++) {
-            //var firstNumerator = RandomUtils.generateRandomNums(1);
-            //var secondNumerator = RandomUtils.generateRandomNums(1);
-            var firstNumerator = 12;
-            var secondNumerator = 8;
+            var firstNumerator = RandomUtils.generateRandomNums(1);
+            var secondNumerator = RandomUtils.generateRandomNums(1);
             expressions[i] = firstNumerator + " " + secondNumerator;
             correctAnswers[i] = searchDivisor(firstNumerator, secondNumerator);
         }

@@ -17,8 +17,10 @@ public class Progression {
             var volSequenceLength = RandomUtils.generateRandomNums(MIN_SEQUNCE_LENGTH, MAX_SEQUENCE_LENGTH);
             var volArifmeticProgresion = RandomUtils.generateRandomNums(1, MAX_ARIFMETIC_PROGRESSION);
             var possitionHiddenNumber = RandomUtils.generateRandomNums(0, volSequenceLength - 1);
+            //var possitionHiddenNumber = 0;
             expressions[i]  = formingExpression(numMinForProgression, volSequenceLength, volArifmeticProgresion);
-            correctAnswers[i] = String.valueOf(possitionHiddenNumber * volArifmeticProgresion + numMinForProgression);
+            var hiddenNumber = possitionHiddenNumber * volArifmeticProgresion + numMinForProgression;
+            correctAnswers[i] = String.valueOf(hiddenNumber);
         }
         Engine.playGame(expressions, correctAnswers, QUESTION);
     }
