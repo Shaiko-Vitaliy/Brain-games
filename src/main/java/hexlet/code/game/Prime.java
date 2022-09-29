@@ -16,7 +16,7 @@ public class Prime {
         }
         Engine.playGame(expressions, correctAnswers, QUESTION);
     }
-
+    // check
     private static boolean checkingForNumbersOnPrimes(int checkNum) {
         if (checkNum == 2) {
             return true;
