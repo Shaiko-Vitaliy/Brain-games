@@ -36,4 +36,4 @@ public class GCD {
         return String.valueOf(result);
     }
 }
-
+//ewf
