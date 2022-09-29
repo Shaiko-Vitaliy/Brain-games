@@ -10,4 +10,4 @@ build
 bin
 .project*
 .classpath
-.idea/
+app/.idea/
