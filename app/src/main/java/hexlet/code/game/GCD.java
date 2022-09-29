@@ -11,8 +11,10 @@ public class GCD {
         var expressions = new String[NUMBER_OF_LAUNCHES];
         var correctAnswers = new String[NUMBER_OF_LAUNCHES];
         for (int i = 0; i < NUMBER_OF_LAUNCHES; i++) {
-            var firstNumerator = RandomUtils.generateRandomNums(1);
-            var secondNumerator = RandomUtils.generateRandomNums(1);
+            //var firstNumerator = RandomUtils.generateRandomNums(1);
+            //var secondNumerator = RandomUtils.generateRandomNums(1);
+            var firstNumerator = 12;
+            var secondNumerator = 8;
             expressions[i] = firstNumerator + " " + secondNumerator;
             correctAnswers[i] = searchDivisor(firstNumerator, secondNumerator);
         }
@@ -27,7 +29,7 @@ public class GCD {
             result = minNum;
             return String.valueOf(result);
         } else {
-            for (int i = 1; i < minNum / 2; i++) {
+            for (int i = 1; i <= minNum / 2; i++) {
                 if (minNum % i == 0 && maxNum % i == 0) {
                     result = i;
                 }
