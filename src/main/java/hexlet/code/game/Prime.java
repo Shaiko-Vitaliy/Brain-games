@@ -1,34 +1,45 @@
 package hexlet.code.game;
 
 import hexlet.code.Engine;
+import hexlet.code.App;
 import hexlet.code.RandomUtils;
 
 public class Prime {
     private static final int NUMBER_OF_LAUNCHES = 3;
-    private static final String QUESTION = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+    private static final String TYPE_OF_GAME = "Prime";
     public static void startGame() {
-        var expressions = new String[NUMBER_OF_LAUNCHES];
-        var correctAnswers = new String[NUMBER_OF_LAUNCHES];
+        var resultGame = true;
+        App.sayHello();
+        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
+        var tasks = new String[1];
         for (int i = 0; i < NUMBER_OF_LAUNCHES; i++) {
             var checkNum = RandomUtils.generateRandomNums();
-            expressions[i] = String.valueOf(checkNum);
-            correctAnswers[i] = checkingForNumbersOnPrimes(checkNum) ? "yes" : "no";
+            var resultCheckingForNumbersOnPrimes = checkingForNumbersOnPrimes(checkNum);
+            var expression = String.valueOf(checkNum);
+            tasks[0] = resultCheckingForNumbersOnPrimes;
+            var resultComparisonQuestionAndAnswer = Engine.playGame(tasks, expression, TYPE_OF_GAME);
+            if (!resultComparisonQuestionAndAnswer) {
+                resultGame = false;
+                break;
+            }
         }
-        Engine.playGame(expressions, correctAnswers, QUESTION);
+        if (resultGame) {
+            System.out.println("Congratulations, " + App.getUserName() + "!");
+        }
     }
-    // check
-    private static boolean checkingForNumbersOnPrimes(int checkNum) {
+
+    public static String checkingForNumbersOnPrimes(int checkNum) {
         if (checkNum == 2) {
-            return true;
+            return "yes";
         }
         if (checkNum == 1 || checkNum % 2 == 0) {
-            return false;
+            return "no";
         }
         for (var i = 2; i <= Math.sqrt(checkNum); i++) {
             if (checkNum % i == 0) {
-                return false;
+                return "no";
             }
         }
-        return true;
+        return "yes";
     }
 }
