@@ -10,7 +10,7 @@ public class Engine {
         System.out.println(question);
         var result = true;
         for (var i = 0; i < expressions.length; i++) {
-            result = comparisonQuestionAndAnswer(expressions[i], correctAnswers[i], question);
+            result = comparisonQuestionAndAnswer(expressions[i], correctAnswers[i]);
             if (!result) {
                 break;
             }
@@ -20,14 +20,8 @@ public class Engine {
         }
     }
 
-    private static boolean comparisonQuestionAndAnswer(String expression, String correctAnswer, String question) {
-        var expressionFinal = "";
-        if (question.equals("What number is missing in the progression?")) {
-            expressionFinal = hideNumberInProgression(expression, correctAnswer);
-        } else {
-            expressionFinal = expression;
-        }
-        System.out.println("Question: " + expressionFinal);
+    private static boolean comparisonQuestionAndAnswer(String expression, String correctAnswer) {
+        System.out.println("Question: " + expression);
         System.out.print("Your answer: ");
         var answer = SCANNER.nextLine();
         if (answer.equals(correctAnswer)) {
@@ -41,17 +35,4 @@ public class Engine {
         return true;
     }
 
-    private static String hideNumberInProgression(String expression, String correctAnswer) {
-        var sequenceNums = expression.split(" ");
-        var expressionFinal = "";
-        for (String sequenceNum : sequenceNums) {
-            if (sequenceNum.equals(correctAnswer)) {
-                expressionFinal = expressionFinal + ".. ";
-            } else {
-                expressionFinal = expressionFinal + sequenceNum + " ";
-            }
-        }
-        return expressionFinal;
-    }
 }
-

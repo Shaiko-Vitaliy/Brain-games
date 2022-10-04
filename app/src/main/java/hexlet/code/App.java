@@ -16,8 +16,8 @@ public class App {
         choiseGame();
     }
 
-    public static void choiseGame() {
-        menuOutput();
+    private static void choiseGame() {
+        showMenu();
         var numGame = SCANNER.nextLine();
         switch (numGame) {
             case "1":
@@ -43,7 +43,7 @@ public class App {
         }
     }
 
-    public  static void menuOutput() {
+    private static void showMenu() {
         System.out.println("Please enter the game number and press Enter.");
         System.out.println("1 - Greet");
         System.out.println("2 - Even");
@@ -61,9 +61,8 @@ public class App {
         System.out.println("Hello, " + userName + "!");
     }
 
-    public  static  String getUserName() {
+    public static  String getUserName() {
         return  userName;
     }
 
 }
-//ewf

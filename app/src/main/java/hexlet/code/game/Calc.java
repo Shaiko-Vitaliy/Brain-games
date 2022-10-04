@@ -50,4 +50,3 @@ public class Calc {
         return String.valueOf(result);
     }
 }
-//ewf
