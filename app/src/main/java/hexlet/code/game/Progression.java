@@ -9,6 +9,7 @@ public class Progression {
     private static final int MAX_ARIFMETIC_PROGRESSION = 4;
     private static final int NUMBER_OF_LAUNCHES = 3;
     private static final String QUESTION = "What number is missing in the progression?";
+
     public static void startGame() {
         var expressions = new String[NUMBER_OF_LAUNCHES];
         var correctAnswers = new String[NUMBER_OF_LAUNCHES];
@@ -26,27 +27,27 @@ public class Progression {
         Engine.playGame(expressions, correctAnswers, QUESTION);
     }
 
-    private static String formingExpression(int numMin, int volSequenceLength, int volArifmeticProgresion) {
-        var result = new StringBuilder();
+    private static int[] formingExpression(int numMin, int volSequenceLength, int volArifmeticProgresion) {
         var count = numMin;
+        var nums = new int[volSequenceLength];
         for (int i = 0; i < volSequenceLength; i++) {
-            result.append(count);
-            result.append(" ");
+            nums[i] = count;
             count += volArifmeticProgresion;
         }
-        return result.toString();
+        return nums;
     }
 
-    private static String hideNumberInProgression(String expression, String correctAnswer) {
-        var sequenceNums = expression.split(" ");
-        var expressionFinal = "";
-        for (String sequenceNum : sequenceNums) {
+    private static String hideNumberInProgression(int[] expression, String correctAnswer) {
+        var result = new StringBuilder();
+        for (var num : expression) {
+            var sequenceNum = String.valueOf(num);
             if (sequenceNum.equals(correctAnswer)) {
-                expressionFinal = expressionFinal + ".. ";
+                result.append(".. ");
             } else {
-                expressionFinal = expressionFinal + sequenceNum + " ";
+                result.append(sequenceNum);
+                result.append(" ");
             }
         }
-        return expressionFinal;
+        return result.toString();
     }
 }

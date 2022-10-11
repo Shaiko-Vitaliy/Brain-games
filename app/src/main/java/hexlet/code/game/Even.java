@@ -12,16 +12,12 @@ public class Even {
         for (int i = 0; i < NUMBER_OF_LAUNCHES; i++) {
             int testedNum = RandomUtils.generateRandomNums();
             expressions[i] = String.valueOf(testedNum);
-            correctAnswers[i] = evenParity(testedNum);
+            correctAnswers[i] = isEven(testedNum) ? "yes" : "no";
         }
         Engine.playGame(expressions, correctAnswers, QUESTION);
     }
 
-    private static String evenParity(int num) {
-        if (num % 2 == 0) {
-            return "yes";
-        } else {
-            return "no";
-        }
+    private static boolean isEven(int num) {
+        return num % 2 == 0;
     }
 }
