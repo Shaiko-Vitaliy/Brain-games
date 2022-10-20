@@ -3,7 +3,7 @@ package hexlet.code.game;
 import hexlet.code.Engine;
 import hexlet.code.RandomUtils;
 
-public class GCD {
+public class GreatestCommonDivisor {
     private static final int NUMBER_OF_LAUNCHES = 3;
     private static final String QUESTION = "Find the greatest common divisor of given numbers.";
 

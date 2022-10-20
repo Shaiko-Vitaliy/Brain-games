@@ -3,7 +3,7 @@ package hexlet.code.game;
 import hexlet.code.Engine;
 import hexlet.code.RandomUtils;
 
-public class Calc {
+public class Calculator {
     private static final int MATHEMATICAL_OPERATION = 3;
     private static final int NUMBER_OF_LAUNCHES = 3;
     private static final String QUESTION = "What is the result of the expression?";
@@ -14,7 +14,7 @@ public class Calc {
             var firstSummand = RandomUtils.generateRandomNums();
             var secondSummand = RandomUtils.generateRandomNums();
             var mathematicalOperation = generateMathematicalOperation();
-            correctAnswers[i] = Calc.calculationOfNumbers(firstSummand, secondSummand, mathematicalOperation);
+            correctAnswers[i] = Calculator.calculationOfNumbers(firstSummand, secondSummand, mathematicalOperation);
             expressions[i] = firstSummand + " " + mathematicalOperation + " " + secondSummand;
         }
         Engine.playGame(expressions, correctAnswers, QUESTION);

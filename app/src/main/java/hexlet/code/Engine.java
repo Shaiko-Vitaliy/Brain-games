@@ -12,12 +12,10 @@ public class Engine {
         for (var i = 0; i < expressions.length; i++) {
             result = comparisonQuestionAndAnswer(expressions[i], correctAnswers[i]);
             if (!result) {
-                break;
+                return;
             }
         }
-        if (result) {
             System.out.println("Congratulations, " + App.getUserName() + "!");
-        }
     }
 
     private static boolean comparisonQuestionAndAnswer(String expression, String correctAnswer) {

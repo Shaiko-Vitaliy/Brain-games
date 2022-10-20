@@ -1,10 +1,7 @@
 package hexlet.code;
 
-import hexlet.code.game.Calc;
-import hexlet.code.game.Even;
-import hexlet.code.game.GCD;
-import hexlet.code.game.Prime;
-import hexlet.code.game.Progression;
+import hexlet.code.game.*;
+import hexlet.code.game.GreatestCommonDivisor;
 import java.util.Scanner;
 
 public class App {
@@ -27,10 +24,10 @@ public class App {
                 Even.startGame();
                 break;
             case "3":
-                Calc.startGame();
+                Calculator.startGame();
                 break;
             case "4":
-                GCD.startGame();
+                GreatestCommonDivisor.startGame();
                 break;
             case "5":
                 Progression.startGame();

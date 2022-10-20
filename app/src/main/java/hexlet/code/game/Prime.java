@@ -12,12 +12,12 @@ public class Prime {
         for (int i = 0; i < NUMBER_OF_LAUNCHES; i++) {
             var checkNum = RandomUtils.generateRandomNums();
             expressions[i] = String.valueOf(checkNum);
-            correctAnswers[i] = isPrimes(checkNum) ? "yes" : "no";
+            correctAnswers[i] = isPrime(checkNum) ? "yes" : "no";
         }
         Engine.playGame(expressions, correctAnswers, QUESTION);
     }
     // check
-    private static boolean isPrimes(int checkNum) {
+    private static boolean isPrime(int checkNum) {
         if (checkNum == 2) {
             return true;
         }
