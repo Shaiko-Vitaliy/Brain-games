@@ -1,7 +1,10 @@
 package hexlet.code;
 
-import hexlet.code.game.*;
+import hexlet.code.game.Prime;
+import hexlet.code.game.Calculator;
+import hexlet.code.game.Even;
 import hexlet.code.game.GreatestCommonDivisor;
+import hexlet.code.game.Progression;
 import java.util.Scanner;
 
 public class App {
