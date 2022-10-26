@@ -5,18 +5,17 @@ import hexlet.code.RandomUtils;
 
 public class GreatestCommonDivisor {
     private static final int NUMBER_OF_LAUNCHES = 3;
-    private static final String QUESTION = "Find the greatest common divisor of given numbers.";
+    private static final String TASK = "Find the greatest common divisor of given numbers.";
 
     public static void startGame() {
-        var expressions = new String[NUMBER_OF_LAUNCHES];
-        var correctAnswers = new String[NUMBER_OF_LAUNCHES];
+        var questionsAndCorrectAnswers = new String[NUMBER_OF_LAUNCHES][2];
         for (int i = 0; i < NUMBER_OF_LAUNCHES; i++) {
             var firstNumerator = RandomUtils.generateRandomNums(1);
             var secondNumerator = RandomUtils.generateRandomNums(1);
-            expressions[i] = firstNumerator + " " + secondNumerator;
-            correctAnswers[i] = searchDivisor(firstNumerator, secondNumerator);
+            questionsAndCorrectAnswers[i][0] = firstNumerator + " " + secondNumerator;
+            questionsAndCorrectAnswers[i][1] = searchDivisor(firstNumerator, secondNumerator);
         }
-        Engine.playGame(expressions, correctAnswers, QUESTION);
+        Engine.playGame(questionsAndCorrectAnswers, TASK);
     }
 
     private static String searchDivisor(int firstNumerator, int secondNumerator) {

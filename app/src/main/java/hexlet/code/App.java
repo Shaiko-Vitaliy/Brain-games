@@ -9,16 +9,14 @@ import java.util.Scanner;
 
 public class App {
 
-    private static final Scanner SCANNER = new Scanner(System.in);
-    private static String userName = "";
-
     public static void main(String[] args) {
         choiseGame();
     }
 
     private static void choiseGame() {
+        Scanner scanner = new Scanner(System.in);
         showMenu();
-        var numGame = SCANNER.nextLine();
+        var numGame = scanner.nextLine();
         switch (numGame) {
             case "1":
                 Cli.playGame();
@@ -54,15 +52,4 @@ public class App {
         System.out.println("0 - Exit");
         System.out.print("Your choice: ");
     }
-
-    public static void sayHello() {
-        System.out.print("Welcome to the Brain Games!" + "\n" + "May I have your name? ");
-        userName = SCANNER.nextLine();
-        System.out.println("Hello, " + userName + "!");
-    }
-
-    public static  String getUserName() {
-        return  userName;
-    }
-
 }

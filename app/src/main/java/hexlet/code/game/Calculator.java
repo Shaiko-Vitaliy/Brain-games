@@ -6,18 +6,18 @@ import hexlet.code.RandomUtils;
 public class Calculator {
     private static final int MATHEMATICAL_OPERATION = 3;
     private static final int NUMBER_OF_LAUNCHES = 3;
-    private static final String QUESTION = "What is the result of the expression?";
+    private static final String TASK = "What is the result of the expression?";
     public static void startGame() {
-        var expressions = new String[NUMBER_OF_LAUNCHES];
-        var  correctAnswers = new String[NUMBER_OF_LAUNCHES];
+        var questionsAndCorrectAnswers = new String[NUMBER_OF_LAUNCHES][2];
         for (int i = 0; i < NUMBER_OF_LAUNCHES; i++) {
             var firstSummand = RandomUtils.generateRandomNums();
             var secondSummand = RandomUtils.generateRandomNums();
             var mathematicalOperation = generateMathematicalOperation();
-            correctAnswers[i] = Calculator.calculationOfNumbers(firstSummand, secondSummand, mathematicalOperation);
-            expressions[i] = firstSummand + " " + mathematicalOperation + " " + secondSummand;
+            questionsAndCorrectAnswers[i][0] = firstSummand + " " + mathematicalOperation + " " + secondSummand;
+            questionsAndCorrectAnswers[i][1] = Calculator.calculationOfNumbers(firstSummand, secondSummand,
+                    mathematicalOperation);
         }
-        Engine.playGame(expressions, correctAnswers, QUESTION);
+        Engine.playGame(questionsAndCorrectAnswers, TASK);
     }
     private static String generateMathematicalOperation() {
         var numberMathematicalOperation = RandomUtils.generateRandomNums(0, MATHEMATICAL_OPERATION);

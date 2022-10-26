@@ -3,34 +3,31 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Engine {
-    private static final Scanner SCANNER = new Scanner(System.in);
 
-    public static void playGame(String[] expressions, String[] correctAnswers, String question) {
-        App.sayHello();
-        System.out.println(question);
+    public static void playGame(String[][] questionsAndCorrectAnswers, String task) {
+        Scanner scanner = new Scanner(System.in);
+        String userName;
+        System.out.print("Welcome to the Brain Games!" + "\n" + "May I have your name? ");
+        userName = scanner.nextLine();
+        System.out.println("Hello, " + userName + "!");
+        System.out.println(task);
         var result = true;
-        for (var i = 0; i < expressions.length; i++) {
-            result = comparisonQuestionAndAnswer(expressions[i], correctAnswers[i]);
-            if (!result) {
-                return;
+        for (String[] questionAndCorrectAnswer : questionsAndCorrectAnswers) {
+            System.out.println("Question: " + questionAndCorrectAnswer[0]);
+            System.out.print("Your answer: ");
+            var answer = scanner.nextLine();
+            if (answer.equals(questionAndCorrectAnswer[1])) {
+                System.out.println("Correct!");
+            } else {
+                System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '"
+                        + questionAndCorrectAnswer[1] + "'.");
+                System.out.println("Let's try again, " + userName + "!");
+                result = false;
+                break;
             }
         }
-        System.out.println("Congratulations, " + App.getUserName() + "!");
-    }
-
-    private static boolean comparisonQuestionAndAnswer(String expression, String correctAnswer) {
-        System.out.println("Question: " + expression);
-        System.out.print("Your answer: ");
-        var answer = SCANNER.nextLine();
-        if (answer.equals(correctAnswer)) {
-            System.out.println("Correct!");
-        } else {
-            System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '"
-                    + correctAnswer + "'.");
-            System.out.println("Let's try again, " + App.getUserName() + "!");
-            return false;
+        if (result) {
+            System.out.println("Congratulations, " + userName + "!");
         }
-        return true;
     }
-
 }
