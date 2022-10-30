@@ -18,13 +18,7 @@ public class Prime {
         Engine.playGame(questionsAndCorrectAnswers, TASK);
     }
     private static boolean isPrime(int checkNum) {
-        if (checkNum < 0) {
-            return false;
-        }
-        if (checkNum == 2) {
-            return true;
-        }
-        if (checkNum == 1 || checkNum % 2 == 0) {
+        if (checkNum < 0 || checkNum == 1 || checkNum % 2 == 0) {
             return false;
         }
         for (var i = 2; i <= Math.sqrt(checkNum); i++) {

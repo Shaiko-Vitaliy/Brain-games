@@ -17,16 +17,16 @@ public class Progression {
             var volSequenceLength = RandomUtils.generateRandomNums(MIN_SEQUNCE_LENGTH, MAX_SEQUENCE_LENGTH);
             var volArifmeticProgresion = RandomUtils.generateRandomNums(1, MAX_ARIFMETIC_PROGRESSION);
             var possitionHiddenNumber = RandomUtils.generateRandomNums(0, volSequenceLength - 1);
-            var progressionLine = formingProgression(numMinForProgression,
+            var progressionLine = formProgression(numMinForProgression,
                     volSequenceLength, volArifmeticProgresion);
             var hiddenNumber = possitionHiddenNumber * volArifmeticProgresion + numMinForProgression;
             questionsAndCorrectAnswers[i][1] = String.valueOf(hiddenNumber);
-            questionsAndCorrectAnswers[i][0] = hidingNumberInProgression(progressionLine, String.valueOf(hiddenNumber));
+            questionsAndCorrectAnswers[i][0] = hideNumberInProgression(progressionLine, String.valueOf(hiddenNumber));
         }
         Engine.playGame(questionsAndCorrectAnswers, TASK);
     }
 
-    private static int[] formingProgression(int numMin, int volSequenceLength, int volArifmeticProgresion) {
+    private static int[] formProgression(int numMin, int volSequenceLength, int volArifmeticProgresion) {
         var count = numMin;
         var nums = new int[volSequenceLength];
         for (int i = 0; i < volSequenceLength; i++) {
@@ -36,7 +36,7 @@ public class Progression {
         return nums;
     }
 
-    private static String hidingNumberInProgression(int[] expression, String correctAnswer) {
+    private static String hideNumberInProgression(int[] expression, String correctAnswer) {
         var result = new StringBuilder();
         for (var num : expression) {
             var sequenceNum = String.valueOf(num);
